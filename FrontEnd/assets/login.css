@@ -1,0 +1,89 @@
+/* Styles de la page de connexion */
+
+/* 
+Applique une mise en gras sur les liens ou éléments déjà visités. 
+Cela permet à l'utilisateur de visualiser facilement ce qu'il a déjà consulté.
+*/
+.visited {
+    font-weight: bold;
+}
+
+/* 
+Centre le titre (niveau 2) du formulaire de connexion.
+Le texte est centré horizontalement par rapport à l'écran.
+*/
+.user-login-formulary h2 {
+    text-align: center;
+}
+
+/* 
+Formulaire de connexion centré horizontalement avec une largeur de 50% de l'écran. 
+Les champs et les boutons sont disposés en colonne avec un texte aligné à gauche.
+*/
+#user-login-form {
+    width: 50%;
+    margin: auto;
+    text-align: left;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 
+Ajoute un espacement au-dessus et en dessous des étiquettes (labels) du formulaire. 
+Les étiquettes sont séparées du reste du contenu pour améliorer la lisibilité.
+*/
+#user-login-form label {
+    margin: 2em 0 1em 0;
+}
+
+/* 
+Style pour les champs de saisie du formulaire. 
+Les champs ont une hauteur de 50px avec une police large (1.2em) et une légère ombre pour les mettre en relief.
+*/
+#user-login-form input {
+    height: 50px;
+    font-size: 1.2em;
+    border: none;
+    box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+
+/* 
+Style pour le bouton de soumission du formulaire (Connexion).
+Le bouton est vert (#1D6154), large (180px), centré, avec un texte en gras blanc. 
+Les coins sont arrondis pour un effet de bouton moderne.
+*/
+#user-login-form input[type="submit"] {
+    font-family: 'Syne';
+    font-weight: 700;
+    color: white;
+    background-color: #1D6154;
+    margin: 2em auto;
+    width: 180px;
+    text-align: center;
+    border-radius: 60px;
+    cursor: pointer;
+}
+
+/* 
+Style pour les liens de navigation dans le formulaire de connexion. 
+Le texte est centré et noir avec un style de lien par défaut.
+*/
+#user-login-form a {
+    text-align: center;
+    color: #000000;
+}
+
+/* 
+Message d'erreur affiché en cas de problème de connexion (ex : mot de passe incorrect).
+Le message est rouge (#FF0000), centré, avec une taille de police plus grande (1.2em). 
+Il est initialement caché (display: none).
+*/
+#login-error-message {
+    display: none;
+    color: #FF0000;
+    font-size: 1.2em;
+    padding: 15px;
+    text-align: center;
+    background: #FFE0E0; /* Fond légèrement rouge pour indiquer une erreur */
+}

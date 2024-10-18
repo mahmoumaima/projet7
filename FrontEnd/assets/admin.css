@@ -1,0 +1,408 @@
+/* Styles de la page d'administration */
+
+/*  
+Affiche un bandeau noir en haut de la page. Ce bandeau est centré horizontalement
+et contient du texte en blanc avec une taille de police de 16px. 
+Il s'étend sur toute la largeur de l'écran et reste positionné en haut (absolu).
+*/
+#edit-mode {
+  justify-content: center;
+  gap: 10px;
+  background-color: black;
+  color: white;
+  height: 30px;
+  width: 100%;
+  padding-top: 15px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 18px;
+}
+
+/* 
+Ajoute un espace transparent sous le bandeau noir. 
+Cela permet d'éviter que le contenu de la page ne se colle au bandeau.
+*/
+#spacer {
+  height: 30px;
+  background: transparent;
+}
+
+/* 
+Définit la taille des icônes d'édition (modifier) dans le bandeau noir.
+Les icônes sont petites (15px par 15px) et bien alignées avec le texte.
+*/
+.edit-icon {
+  width: 15px;
+  height: 15px;
+}
+
+/* 
+Centrer les éléments de la section 'Modifier Projets'. 
+Les éléments sont disposés en flex avec un espacement de 10px entre eux.
+*/
+#modifier-projets {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  text-align: center;
+}
+
+/* 
+Style pour le texte de la section 'Modifier Projets', avec une police de 14px et un lien sans soulignement.
+Le texte est noir (#000000).
+*/
+#modifier-projets a {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16px;
+  color: #000000;
+  text-decoration: none;
+}
+
+/* 
+Ajoute un espace (padding) autour du bouton 'Modifier' pour qu'il soit bien aligné avec les autres éléments.
+*/
+#modifier-projets-btn {
+  padding: 10px;
+}
+
+/* 
+Un fond semi-transparent (noir avec une opacité de 50%) qui couvre tout l'écran lorsque la modale est ouverte.
+Cela attire l'attention sur la modale et diminue l'impact visuel du reste de la page.
+*/
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: none;
+  z-index: 1;
+}
+
+/* 
+Boîte blanche centrée sur l'écran (modale). 
+Elle a une largeur de 40% de l'écran, avec des coins arrondis et une ombre subtile pour lui donner du relief.
+*/
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  width: 40%;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 2;
+  display: none;
+}
+
+/* 
+Ajoute un espacement interne (padding) au contenu de la modale pour un rendu plus aéré.
+*/
+.modal-content {
+  padding: 20px;
+}
+
+/* 
+Icône de fermeture (généralement une croix) située en haut à droite de la modale.
+Elle est cliquable et permet de fermer la modale. Taille de 24px pour une bonne visibilité.
+*/
+.close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* 
+Titre centré en haut de la modale. 
+La taille de police est assez grande (26px) pour qu'il soit bien visible et attire l'attention.
+*/
+.titre-modale {
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 30px;
+  text-align: center;
+  color: #000000;
+}
+
+/* 
+Conteneur pour la première partie de la modale (par exemple la galerie photo).
+Les éléments sont centrés et disposent d'un espacement interne de 30px sur les côtés.
+*/
+.part-one {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 30px;
+}
+
+/* 
+Ajoute une ligne grise (finie) sous certains éléments pour les séparer visuellement.
+*/
+.separator {
+  border-bottom: 1px solid #B3B3B3;
+}
+
+/* 
+Galerie d'images dans la modale. 
+Les images sont organisées en grille (flexbox), avec des espaces de 10px entre elles.
+La largeur de la galerie est de 80% de la modale.
+*/
+#images-modale {
+  position: relative;
+  display: flex;
+  flex-flow: row wrap;
+  gap: 10px;
+  width: 80%;
+  margin-top: 3em;
+  margin-bottom: 2em;
+  padding-bottom: 6em;
+}
+
+/* 
+Les images dans la galerie sont ajustées pour remplir l'espace disponible (tout en gardant le ratio).
+Cela permet un affichage cohérent et propre des images.
+*/
+.image-chargee {
+  display: block;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+/* 
+Bouton vert avec texte blanc qui permet d'ajouter une nouvelle image dans la modale.
+Le bouton est large (237px) avec un style arrondi et un texte en gras (700).
+*/
+#ajouter-btn {
+  border: none;
+  border-radius: 12px;
+  background: #1D6154;
+  width: 237px;
+  height: 36px;
+  font-family: Syne;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 16px;
+  text-align: center;
+  color: #FFFFFF;
+  cursor: pointer;
+}
+
+/* 
+Chaque image et son bouton de suppression sont contenus dans cette div.
+Elle est flexible pour s'adapter à la taille des images et permet de placer un bouton en haut à droite.
+*/
+.figure-container {
+  position: relative;
+  flex: 0 1 calc(20% - 8px);
+}
+
+/* 
+Bouton de suppression en haut à droite de chaque image dans la galerie.
+Il est petit (20px) et affiché en noir, avec une icône blanche centrée.
+*/
+.supprimer-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  padding-top: 3px;
+  border-radius: 4px;
+  background-color: #000000;
+  text-align: center;
+  color: #FFFFFF;
+  cursor: pointer;
+}
+
+/* 
+Deuxième partie de la modale, souvent pour ajouter de nouvelles photos.
+Centrée avec une largeur de 50% de la modale.
+*/
+.part-two {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 30px;
+  width: 50%;
+  margin: 0 auto;
+}
+
+/* 
+Bouton de retour en haut à gauche de la modale pour revenir à la vue précédente.
+Il est grand (24px) et bien visible.
+*/
+.return {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* 
+Conteneur pour l'ajout d'images dans la modale.
+Il prend toute la largeur et hauteur de la modale avec des marges en haut et en bas pour espacer le contenu.
+*/
+#ajout-image {
+  width: 100%;
+  height: 100%;
+  margin-top: 3em;
+  margin-bottom: 2em;
+  padding-bottom: 6em;
+}
+
+/* 
+Bouton de validation désactivé par défaut (gris), utilisé pour confirmer l'ajout d'une image.
+Il a un style similaire au bouton 'Ajouter' mais est initialement inactif.
+*/
+#valider-btn {
+  border: none;
+  border-radius: 12px;
+  background: #A7A7A7;
+  width: 237px;
+  height: 36px;
+  font-family: Syne;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 16px;
+  text-align: center;
+  color: #FFFFFF;
+}
+
+/* 
+Style du bouton 'Valider' lorsqu'il est activé (fond vert). 
+Il devient cliquable avec un curseur pointer.
+*/
+.valider-btn-active {
+  background: #1D6154 !important;
+  cursor: pointer;
+}
+
+/* 
+Formulaire d'ajout de photos avec des champs alignés verticalement (en colonne). 
+Chaque champ est espacé de 20px.
+*/
+#photo-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* 
+Style des étiquettes de formulaire, affichées en bloc avec un espacement interne en bas (10px).
+La police est de taille 14px avec une couleur de texte gris foncé.
+*/
+#photo-form label {
+  display: block;
+  padding-bottom: 10px;
+  color: #3D3D3D;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 16px;
+}
+
+/* 
+Les champs de texte et les listes déroulantes du formulaire sont grands (50px de hauteur) avec une police de 1.2em.
+Ils ont également une légère ombre pour donner un effet d'élévation.
+*/
+#photo-form input[type=text], select {
+  width: 100%;
+  height: 50px;
+  font-size: 1.2em;
+  border: none;
+  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+
+/* 
+Affichage des messages d'erreur sous les champs de formulaire. 
+Ils sont rouges et petits (0.9em) et sont cachés par défaut.
+*/
+.error-message {
+  color: red;
+  font-size: 0.9em;
+  display: none;
+  padding-top: 5px;
+}
+
+/* 
+Message d'information en petit texte centré sous certains éléments du formulaire. 
+Texte gris clair et taille de police réduite (10px).
+*/
+.info-message {
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 11px;
+  text-align: center;
+  color: #444444;
+  padding-top: 10px;
+}
+
+/* 
+Bouton d'upload d'image personnalisé, en gris clair, avec un texte centré et une bordure arrondie.
+Il remplace le bouton de fichier par défaut.
+*/
+.image-upload-label {
+  font-size: 12px;
+  color: #306685 !important;
+  text-align: center;
+  display: inline-block;
+  padding: 10px 20px;
+  cursor: pointer;
+  background-color: #CBD6DC;
+  width: 160px !important;
+  border-radius: 20px;
+}
+
+/* Cache le champ de fichier par défaut */
+input[type="file"] {
+  display: none;
+}
+
+/* 
+Conteneur pour la section d'upload d'image, centré verticalement avec un fond bleu clair.
+Les éléments à l'intérieur sont alignés verticalement.
+*/
+#image-input {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #E8F1F6;
+  padding: 10px;
+}
+
+/* 
+Conteneur pour l'affichage de la prévisualisation de l'image uploadée.
+Centré avec un petit espacement en bas (5px).
+*/
+#image-preview-container {
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+/* 
+Image de prévisualisation avec une taille maximale de 120px en largeur et en hauteur.
+Cela garantit que l'image reste à une taille raisonnable dans la modale.
+*/
+#image-preview {
+  max-width: 120px;
+  max-height: 120px;
+}
+
+/* 
+Assure que toutes les images dans la galerie remplissent leur espace parent verticalement.
+*/
+.gallery img {
+  height: 100%;
+}

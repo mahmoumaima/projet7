@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="UTF-8">
+	<title>Sophie Bluel - Architecte d'intérieur</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
+	<!-- Ajout du Font awesome depuis CNDJS-->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
+	<meta name="description" content="">
+	<link rel="stylesheet" href="./assets/style.css">
+	<link rel="stylesheet" href="./assets/admin.css">
+	<script src="./assets/index.js" defer></script>
+	<script src="./assets/admin.js" defer></script> <!-- Ajout du script admin.js -->
+</head>
+<body>
+	<!-- Ajout de la div pour afficher le bondeau noire en haut de la page-->
+	<div id="edit-mode">
+		<!-- Icone et texte du bondeau noire à adapter en CSS avec l'id  edit-mode dans admin.css-->
+		<img class="edit-icon" src="./assets/icons/edit.png" alt="edit icone"/>
+		<p>Mode édition</p>
+	</div>
+	<div id="spacer"></div>
+<header>
+	<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
+	<nav>
+		<ul>
+			<li><a href="index.html">projets</a></li>
+			<li><a href="#contact">contact</a></li>
+			<li id="login-link"><a href="login.html">login</a></li>
+			<li id="logout-link" style="display:none;"><a  href="#">logout</a></li> <!-- Ajout du lien de déconnexion -->
+			<li><a href="https://www.instagram.com/" target="_blank"><img src="./assets/icons/instagram.png" alt="Instagram"></a></li>
+		</ul>
+	</nav>
+</header>
+<main>
+	<section id="introduction">
+		<figure>
+			<img src="./assets/images/sophie-bluel.png" alt="">
+		</figure>
+		<article>
+			<h2>Designer d'espace</h2>
+			<p>Je raconte votre histoire, je valorise vos idées. Je vous accompagne de la conception à la livraison finale du chantier.</p>
+			<p>Chaque projet sera étudié en commun, de façon à mettre en valeur les volumes, les matières et les couleurs dans le respect de l’esprit des lieux et le choix adapté des matériaux. Le suivi du chantier sera assuré dans le souci du détail, le respect du planning et du budget.</p>
+			<p>En cas de besoin, une équipe pluridisciplinaire peut-être constituée : architecte DPLG, décorateur(trice)</p>
+		</article>
+	</section>
+	<section id="portfolio">
+		<div id="modifier-projets">
+			<h2>Mes Projets</h2>
+			<p id="modifier-projets-btn">
+				<!-- Ajout du bouton modifier qui affiche la modal admin -->
+				<a id="modifier-btn" href="#">
+					<img class="edit-icon" src="./assets/icons/edit-project.png" alt="edit icone"/> 
+					<span>Modifier</span>
+				</a>
+			</p>
+		</div>
+		<div id="all-filters" class="filters">
+			<!-- Les boutons de filtre seront ajoutés ici dynamiquement -->
+		</div>
+		<div class="gallery">
+			<!-- Les projets seront ajoutés ici dynamiquement par JavaScript -->
+		</div>
+	</section>
+	<section id="contact">
+		<h2>Contact</h2>
+		<p>Vous avez un projet ? Discutons-en !</p>
+		<form action="#" method="post">
+			<label for="name">Nom</label>
+			<input type="text" name="name" id="name">
+			<label for="email">Email</label>
+			<input type="email" name="email" id="email">
+			<label for="message">Message</label>
+			<textarea name="message" id="message" cols="30" rows="10"></textarea>
+			<input type="submit" value="Envoyer">
+		</form>
+	</section>
+
+<!-- La modale -->
+<div id="modal-overlay" class="overlay"></div>
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <span id="fermer-btn" class="close">&times;</span>
+	<!-- Lien des symboles : https://www.toptal.com/designers/htmlarrows/arrows/ -->
+	<span id="retour-btn" class="return">&larr;</span>
+	<!-- Ici la partie 1, charger les photos et les supprimer -->
+	<div class="part-one">
+		<p class="titre-modale">Galérie photo</p>
+		<div id="images-modale" class="separator"> 
+			<!-- photos de la modale -->
+		</div>
+		<button id="ajouter-btn" class="modale-btn">Ajouter</button>
+	</div>
+	<div class="part-two">
+		<!-- Ici la partie 2 pour ajouter une photo-->
+		<p class="titre-modale">Ajout photo</p>
+		<div id="ajout-image" class="separator"> 
+			<form id="photo-form">
+				<div id="image-input">
+					<div id="image-preview-container">
+						<img id="image-preview" src="assets/icons/image.png" alt="Aperçu de l'image">
+					</div>
+					<div>
+						<label for="image-upload" class="image-upload-label">
+							+ Ajouter Photo
+						</label>
+						<input type="file" id="image-upload" accept="image/*" required>
+						<p class="info-message">jpg, png, 4mo max<p>
+						<span id="image-error" class="error-message"></span>
+					</div>
+				</div>
+				<div>
+					<label for="title">Titre</label>
+					<input type="text" id="title" required>
+					<span id="title-error" class="error-message"></span>
+				</div>
+				<div>
+					<label for="category-select">Catégorie</label>
+					<select id="category-select" required>
+						<!-- On récupère depuis l'API les options -->
+					</select>
+					<span id="category-error" class="error-message"></span>
+				</div>
+			</form>
+		</div>
+		<button id="valider-btn" disabled>Valider</button>
+	</div>
+  </div>
+</div>
+
+</main>
+<footer>
+	<nav>
+		<ul>
+			<li>Mentions Légales</li>
+		</ul>
+	</nav>
+</footer>
+</body>
+</html>
