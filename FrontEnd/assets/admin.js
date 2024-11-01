@@ -10,6 +10,7 @@ const partOne = document.querySelector('.part-one');
 const partTwo = document.querySelector('.part-two');
 const form = document.getElementById("photo-form");
 const imagePreview = document.getElementById('image-preview');
+const imagePreviewContainer = document.getElementById('image-upload-container');
 
 // Gestion de la page index pour afficher les éléments d'admin si on est authentifié
 // -----------------------------------------------------------------------------------
@@ -108,6 +109,7 @@ overlay.addEventListener('click', closeModal);
 function resetModal() {
     imagePreview.src = "./assets/icons/image.png";
     form.reset();
+    imagePreviewContainer.style.display = 'block';
     resetErrorMessages();
     desactiverValiderBtn();
 }
@@ -164,6 +166,7 @@ document.getElementById('image-upload').addEventListener('change', function(even
         reader.onload = function(e) {
             imagePreview.src = e.target.result;
             imagePreview.style.display = 'block';
+            imagePreviewContainer.style.display = 'none';
         };
         reader.readAsDataURL(file);
     }
