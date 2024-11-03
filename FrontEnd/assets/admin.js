@@ -233,10 +233,7 @@ validBtn.addEventListener('click', function(event) {
     if (!image) {
         displayError('image-error', 'Veuillez sélectionner une image.');
         isValid = false;
-    } else if (image.size > 4 * 1024 * 1024) {
-        displayError('image-error', 'L\'image ne doit pas dépasser 4 Mo.');
-        isValid = false;
-    }
+    } 
 
     if (!title) {
         displayError('title-error', 'Veuillez entrer un titre.');
